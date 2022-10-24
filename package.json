@@ -4,7 +4,7 @@
   "description": "Microservicio Wirsolut de traces y excepciones",
   "license": "UNLICENSED",
   "private": "true",
-  "main": "src/main.ts",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon",
     "release": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/main.js"
