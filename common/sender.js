@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Execute = exports.ErrorHandler = exports.SuccessHandler = void 0;
 const httpCodes_1 = __importDefault(require("utils/httpCodes"));
 const logModel_1 = __importDefault(require("models/logModel"));
-const IMethod_1 = require("interfaces/IMethod");
 const IResponse_1 = require("interfaces/IResponse");
 class BaseResponse {
     error;
@@ -41,7 +40,7 @@ const ErrorHandler = async (req, res, e, code, unhandled = true) => {
 exports.ErrorHandler = ErrorHandler;
 const Execute = async (req, res, f, code = httpCodes_1.default.OK) => {
     try {
-        const data = (0, IResponse_1.convertToResponse)((0, IMethod_1.methodIsAsync)(f) ? await f(req, res) : f(req, res), code);
+        const data = (0, IResponse_1.convertToResponse)(await f(req, res), code);
         (0, exports.SuccessHandler)(res, data.value === undefined ? null : data.value, data.code ?? code);
     }
     catch (e) {
