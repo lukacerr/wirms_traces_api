@@ -37,7 +37,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)());
-const ROUTING_DIRS = path.resolve(process.cwd(), './controllers');
+const ROUTING_DIRS = path.resolve(process.cwd(), './controllers') + '/';
 const ROUTE_PREFIX = `${(0, envConfig_1.default)('ROUTE_PREFIX')}/`;
 fs_1.default.readdir(ROUTING_DIRS, async (e, files) => {
     if (e)
